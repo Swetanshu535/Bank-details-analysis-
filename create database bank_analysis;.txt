@@ -1,0 +1,31 @@
+create database bank_analysis;
+use bank_analysis;
+select * from bank_analysis;
+-- Show the total of balance for tertiary 
+select sum(balance) as total_balance,education
+from bank_analysis
+where education="Tertiary";
+
+-- Show the average of duration for married people
+select round(avg(duration)) as total_average,Marital
+from bank_analysis 
+where marital="Married";
+
+-- Show the balance is 0 and age
+select balance,age
+from bank_analysis 
+where balance= 0;
+
+-- Show the balance for age from 30 to 40
+select balance,age
+from bank_analysis
+where age between 30 and 40;
+
+-- Show the bucket function for duration
+select ntile(4) over (order by duration), age
+from bank_analysis;
+
+-- For the divorced people show the balance that is max 
+select max(balance),marital
+from bank_analysis 
+where marital="Divorced";
